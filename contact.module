@@ -1,0 +1,33 @@
+<?php
+/**
+ * Include files
+ */
+module_load_include('inc', 'contact', 'contact.list');
+
+/**
+ * Menu hook
+ */
+function contact_menu()
+{
+    return [
+        //Contact Listing menu
+        'contacts' => [
+            'title'         => t('Contact List'),
+            'page callback' => 'contact_list',
+            'file'          => 'contact.list.inc',
+            'access arguments' => array('access contact'),
+            'translatable'  => TRUE,
+        ],
+
+        // Create Contact
+        'contact/create' => [
+            'title' => t('Create Contact'),
+            'page callback' => 'drupal_get_form',
+            'page arguments' => ['contact_create_form'],
+            'access arguments' => array('access contact'),
+            'file' => 'contact.form.inc',
+            'translatable' => TRUE,
+        ]
+
+    ];
+}

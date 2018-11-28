@@ -1,0 +1,5 @@
+name = Contact
+description = Contact management system
+package = Custom
+version = VERSION
+core = 7.x

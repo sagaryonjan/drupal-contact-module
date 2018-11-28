@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * Contact Schema
+ */
+function contact_schema() {
+  $schema['contact'] = [
+    'description' => 'The base table for contact.',
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'firstname' => [
+        'description' => 'First name',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'lastname' => [
+        'description' => 'Last name',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'subject' => [
+          'description' => 'Subject',
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+          'default' => '',
+      ],
+      'message' => [
+          'description' => 'Message',
+          'type' => 'text',
+          'not null' => TRUE
+      ],
+      'created' => [
+        'description' => 'Timestamp on created',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'changed' => [
+        'description' => 'Timestamp on update',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => [
+      'id',
+    ],
+  ];
+  return $schema;
+}
+
+/**
+ * Contact Uninstall hook
+ */
+function contact_uninstall() {
+  db_drop_table('contact');
+}
